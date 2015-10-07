@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+<tiles-definitions>
+
+	<definition name="defaultTemplate" template="/WEB-INF/template/template.jsp">
+		<put-attribute name="header" value="/WEB-INF/template/header.jsp" />
+		<put-attribute name="menu" value="/WEB-INF/template/menu.jsp" />
+		<put-attribute name="footer" value="/WEB-INF/template/footer.jsp" />
+		<put-list-attribute name="javascripts">
+			<add-attribute value="/resources/js/jquery-2.1.3.js" />
+			<add-attribute value="/resources/bootstrap/js/bootstrap.js" />
+			<add-attribute value="/resources/bootstrap/js/ie-emulation-modes-warning.js" />
+			<add-attribute value="/resources/bootgrid/jquery.bootgrid.js" />
+			<add-attribute value="/resources/chart/Chart.js" />
+		</put-list-attribute>
+		<put-list-attribute name="stylesheets">
+			<add-attribute value="/resources/bootstrap/css/bootstrap.css" />
+			<add-attribute value="/resources/bootstrap/css/bootstrap-theme.css" />
+			<add-attribute value="/resources/css/dashboard.css" />
+			<add-attribute value="/resources/bootgrid/jquery.bootgrid.css" />
+			<add-attribute value="/resources/css/estilo.css" />			
+		</put-list-attribute>
+	</definition>
+
+</tiles-definitions>

@@ -1,0 +1,295 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd 
+	http://www.springframework.org/schema/aop 
+	http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
+	http://www.springframework.org/schema/tx
+    http://www.springframework.org/schema/tx/spring-tx-3.0.xsd">
+
+
+ 	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
+        destroy-method="close">
+        <property name="driverClassName" value="com.mysql.jdbc.Driver" />
+        <property name="url" value="jdbc:mysql://localhost:3306/brend" />
+        <property name="username" value="root" />
+        <property name="password" value="" />
+    </bean>
+ 
+    <!-- Hibernate 4 SessionFactory Bean definition -->
+    <bean id="hibernate4AnnotatedSessionFactory"
+        class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+        <property name="dataSource" ref="dataSource" />
+        <property name="annotatedClasses">
+            <list>
+                <value>com.biavan.brend.model.Funcionario</value>
+                <value>com.biavan.brend.model.TipoFuncionario</value>
+                <value>com.biavan.brend.model.Peca</value>
+                <value>com.biavan.brend.model.TipoMotor</value>
+                <value>com.biavan.brend.model.Marca</value>
+                <value>com.biavan.brend.model.Usuario</value>
+                <value>com.biavan.brend.model.ConfigEmpresa</value>
+                <value>com.biavan.brend.model.TarifarioPeca</value>
+                <value>com.biavan.brend.model.TarifarioServico</value>
+                <value>com.biavan.brend.model.TipoServico</value>
+                <value>com.biavan.brend.model.Servico</value>
+                <value>com.biavan.brend.model.Fornecedor</value>
+                <value>com.biavan.brend.model.TipoDocumento</value>
+                <value>com.biavan.brend.model.Veiculo</value>
+                <value>com.biavan.brend.model.Cliente</value>
+                <value>com.biavan.brend.model.Orcamento</value>
+                <value>com.biavan.brend.model.Pedido</value>
+                <value>com.biavan.brend.model.PecaPedido</value>
+                <value>com.biavan.brend.model.OrdemServico</value>
+                <value>com.biavan.brend.model.PecaOrcamento</value>
+				<value>com.biavan.brend.model.ServicoOrcamento</value>
+				<value>com.biavan.brend.model.SolicitacaoRetirada</value>
+				<value>com.biavan.brend.model.PecaOrdemServico</value>
+				<value>com.biavan.brend.model.ServicoOrdemServico</value>
+				<value>com.biavan.brend.model.RegistroContato</value>
+				<value>com.biavan.brend.model.StatusOrdemServico</value>
+				<value>com.biavan.brend.model.Perfil</value>
+				<value>com.biavan.brend.model.Recurso</value>
+            </list>
+        </property>
+        <property name="hibernateProperties">
+            <props>
+                <prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
+                <prop key="hibernate.show_sql">true</prop>
+                <prop key="hibernate.hbm2ddl.auto">update</prop>
+            </props>
+        </property>
+    </bean>
+    
+         
+    <bean id="funcionarioDAO" class="com.biavan.brend.dao.FuncionarioDAOImpl">
+        <property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
+    </bean>
+    <bean id="funcionarioService" class="com.biavan.brend.service.FuncionarioServiceImpl">
+        <property name="funcionarioDAO" ref="funcionarioDAO"/>
+        <property name="usuarioDAO" ref="usuarioDAO"/>
+    </bean>
+    
+    <bean id="pecaDAO" class="com.biavan.brend.dao.PecaDAOImpl">
+        <property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
+    </bean>
+    <bean id="pecaService" class="com.biavan.brend.service.PecaServiceImpl">
+        <property name="pecaDAO" ref="pecaDAO"/>
+    </bean>
+
+    <bean id="servicoDAO" class="com.biavan.brend.dao.ServicoDAOImpl">
+        <property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
+    </bean>
+    <bean id="servicoService" class="com.biavan.brend.service.ServicoServiceImpl">
+        <property name="servicoDAO" ref="servicoDAO"/>
+    </bean>
+
+    <bean id="tarifarioPecaDAO" class="com.biavan.brend.dao.TarifarioPecaDAOImpl">
+        <property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
+    </bean>
+    <bean id="tarifarioPecaService" class="com.biavan.brend.service.TarifarioPecaServiceImpl">
+        <property name="tarifarioPecaDAO" ref="tarifarioPecaDAO"/>
+    </bean>
+
+    <bean id="tarifarioServicoDAO" class="com.biavan.brend.dao.TarifarioServicoDAOImpl">
+        <property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
+    </bean>
+    <bean id="tarifarioServicoService" class="com.biavan.brend.service.TarifarioServicoServiceImpl">
+        <property name="tarifarioServicoDAO" ref="tarifarioServicoDAO"/>
+    </bean>
+
+    <bean id="tipoFuncionarioDAO" class="com.biavan.brend.dao.TipoFuncionarioDAOImpl">
+        <property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
+    </bean>
+    <bean id="tipoFuncionarioService" class="com.biavan.brend.service.TipoFuncionarioServiceImpl">
+        <property name="tipoFuncionarioDAO" ref="tipoFuncionarioDAO"/>
+    </bean>
+
+	<bean id="perfilDAO" class="com.biavan.brend.dao.PerfilDAOImpl">
+		<property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory"/>
+	</bean>
+     
+    <bean id="usuarioDAO" class="com.biavan.brend.dao.UsuarioDAOImpl">
+        <property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
+    </bean>
+    <bean id="usuarioService" class="com.biavan.brend.service.UsuarioServiceImpl">
+        <property name="usuarioDAO" ref="usuarioDAO"/>
+        <property name="perfilDAO" ref="perfilDAO" />
+    </bean>
+    
+    <bean id="tipoMotorDAO" class="com.biavan.brend.dao.TipoMotorDAOImpl">
+        <property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
+    </bean>
+    <bean id="tipoMotorService" class="com.biavan.brend.service.TipoMotorServiceImpl">
+        <property name="tipoMotorDAO" ref="tipoMotorDAO"/>
+    </bean>
+    
+    <bean id="marcaDAO" class="com.biavan.brend.dao.MarcaDAOImpl">
+        <property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
+    </bean>
+    <bean id="marcaService" class="com.biavan.brend.service.MarcaServiceImpl">
+        <property name="marcaDAO" ref="marcaDAO"/>
+    </bean>
+
+    <bean id="tipoServicoDAO" class="com.biavan.brend.dao.TipoServicoDAOImpl">
+        <property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
+    </bean>
+    <bean id="tipoServicoService" class="com.biavan.brend.service.TipoServicoServiceImpl">
+        <property name="tipoServicoDAO" ref="tipoServicoDAO"/>
+    </bean>
+ 
+ 	<bean id="configEmpresaDAO" class="com.biavan.brend.dao.ConfigEmpresaDAOImpl">
+    	<property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
+    </bean>
+    <bean id="configEmpresaService" class="com.biavan.brend.service.ConfigEmpresaServiceImpl">
+        <property name="configEmpresaDAO" ref="configEmpresaDAO"/>
+    </bean>
+    
+    <bean id="fornecedorDAO" class="com.biavan.brend.dao.FornecedorDAOImpl">
+    	<property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
+    </bean>
+    <bean id="fornecedorService" class="com.biavan.brend.service.FornecedorServiceImpl">
+        <property name="fornecedorDAO" ref="fornecedorDAO"/>
+    </bean>
+    
+    <bean id="tipoDocumentoDAO" class="com.biavan.brend.dao.TipoDocumentoDAOImpl">
+        <property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
+    </bean>
+    <bean id="tipoDocumentoService" class="com.biavan.brend.service.TipoDocumentoServiceImpl">
+        <property name="tipoDocumentoDAO" ref="tipoDocumentoDAO"/>
+    </bean>
+    
+    <bean id="veiculoDAO" class="com.biavan.brend.dao.VeiculoDAOImpl">
+    	<property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
+    </bean>
+    <bean id="veiculoService" class="com.biavan.brend.service.VeiculoServiceImpl">
+        <property name="veiculoDAO" ref="veiculoDAO"/>
+    </bean>
+ 
+    <bean id="clienteDAO" class="com.biavan.brend.dao.ClienteDAOImpl">
+    	<property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
+    </bean>
+    <bean id="clienteService" class="com.biavan.brend.service.ClienteServiceImpl">
+        <property name="clienteDAO" ref="clienteDAO"/>
+    </bean>
+    
+    <bean id="orcamentoDAO" class="com.biavan.brend.dao.OrcamentoDAOImpl">
+    	<property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
+    </bean>
+    <bean id="orcamentoService" class="com.biavan.brend.service.OrcamentoServiceImpl">
+        <property name="orcamentoDAO" ref="orcamentoDAO"/>
+        <property name="pecaOrcamentoDAO" ref="pecaOrcamentoDAO"/>
+        <property name="servicoOrcamentoDAO" ref="servicoOrcamentoDAO"/>
+    </bean>
+    
+    <bean id="ordemServicoDAO" class="com.biavan.brend.dao.OrdemServicoDAOImpl">
+    	<property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
+    </bean>
+    <bean id="ordemServicoService" class="com.biavan.brend.service.OrdemServicoServiceImpl">
+        <property name="ordemServicoDAO" ref="ordemServicoDAO"/>
+        <property name="pecaOrdemServicoDAO" ref="pecaOrdemServicoDAO"/>
+        <property name="servicoOrdemServicoDAO" ref="servicoOrdemServicoDAO"/>
+        <property name="statusOrdemServicoDAO" ref="statusOrdemServicoDAO"/>
+    </bean> 
+ 
+    <bean id="pedidoDAO" class="com.biavan.brend.dao.PedidoDAOImpl">
+    	<property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
+    </bean>
+    <bean id="pedidoService" class="com.biavan.brend.service.PedidoServiceImpl">
+        <property name="pedidoDAO" ref="pedidoDAO"/>
+        <property name="pecaPedidoDAO" ref="pecaPedidoDAO"/>
+        <property name="tarifarioPecaDAO" ref="tarifarioPecaDAO"/>
+        <property name="pecaDAO" ref="pecaDAO"/>
+        <property name="configEmpresaDAO" ref="configEmpresaDAO"/>
+    </bean> 
+
+    <bean id="pecaPedidoDAO" class="com.biavan.brend.dao.PecaPedidoDAOImpl">
+    	<property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
+    </bean>
+    <bean id="pecaPedidoService" class="com.biavan.brend.service.PecaPedidoServiceImpl">
+        <property name="pecaPedidoDAO" ref="pecaPedidoDAO"/>
+    </bean> 
+
+    <bean id="pecaOrcamentoDAO" class="com.biavan.brend.dao.PecaOrcamentoDAOImpl">
+    	<property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
+    </bean>
+    <bean id="pecaOrcamentoService" class="com.biavan.brend.service.PecaOrcamentoServiceImpl">
+        <property name="pecaOrcamentoDAO" ref="pecaOrcamentoDAO"/>
+    </bean>
+    
+    <bean id="servicoOrcamentoDAO" class="com.biavan.brend.dao.ServicoOrcamentoDAOImpl">
+    	<property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
+    </bean>
+    <bean id="servicoOrcamentoService" class="com.biavan.brend.service.ServicoOrcamentoServiceImpl">
+        <property name="servicoOrcamentoDAO" ref="servicoOrcamentoDAO"/>
+    </bean> 
+    
+    <bean id="solicitacaoRetiradaDAO" class="com.biavan.brend.dao.SolicitacaoRetiradaDAOImpl">
+    	<property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
+    </bean>
+    <bean id="solicitacaoRetiradaService" class="com.biavan.brend.service.SolicitacaoRetiradaServiceImpl">
+        <property name="solicitacaoRetiradaDAO" ref="solicitacaoRetiradaDAO"/>
+        <property name="pecaDAO" ref="pecaDAO"/>
+        <property name="pecaOrdemServicoDAO" ref="pecaOrdemServicoDAO"/>
+        <property name="statusOrdemServicoDAO" ref="statusOrdemServicoDAO"/>
+    </bean> 
+    
+    <bean id="pecaOrdemServicoDAO" class="com.biavan.brend.dao.PecaOrdemServicoDAOImpl">
+    	<property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
+    </bean>
+    <bean id="pecaOrdemServicoService" class="com.biavan.brend.service.PecaOrdemServicoServiceImpl">
+        <property name="pecaOrdemServicoDAO" ref="pecaOrdemServicoDAO"/>
+        <property name="ordemServicoDAO" ref="ordemServicoDAO"/>
+        <property name="statusOrdemServicoDAO" ref="statusOrdemServicoDAO"/>
+    </bean>
+    
+    <bean id="servicoOrdemServicoDAO" class="com.biavan.brend.dao.ServicoOrdemServicoDAOImpl">
+    	<property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
+    </bean>
+    <bean id="servicoOrdemServicoService" class="com.biavan.brend.service.ServicoOrdemServicoServiceImpl">
+        <property name="servicoOrdemServicoDAO" ref="servicoOrdemServicoDAO"/>
+    </bean>
+
+    <bean id="statusOrdemServicoDAO" class="com.biavan.brend.dao.StatusOrdemServicoDAOImpl">
+    	<property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
+    </bean>
+    <bean id="statusOrdemServicoService" class="com.biavan.brend.service.StatusOrdemServicoServiceImpl">
+        <property name="statusOrdemServicoDAO" ref="statusOrdemServicoDAO"/>
+    </bean>
+
+    <bean id="registroContatoDAO" class="com.biavan.brend.dao.RegistroContatoDAOImpl">
+    	<property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
+    </bean>
+    <bean id="registroContatoService" class="com.biavan.brend.service.RegistroContatoServiceImpl">
+        <property name="registroContatoDAO" ref="registroContatoDAO"/>
+        <property name="statusOrdemServicoDAO" ref="statusOrdemServicoDAO"/>
+        <property name="configEmpresaDAO" ref="configEmpresaDAO"/>
+    </bean>
+
+    
+    <bean id="exporterService" class="com.biavan.brend.reports.ExporterService"/>
+    <bean id="printReportService" class="com.biavan.brend.reports.PrintReportService"/>
+    
+    
+    <tx:annotation-driven transaction-manager="transactionManager"/>
+     
+    <bean id="transactionManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+        <property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
+    </bean>
+    
+	<tx:advice id="txAdvice" transaction-manager="transactionManager">
+		<tx:attributes>
+			<tx:method name="get*" read-only="true" />
+			<tx:method name="find*" read-only="true" />
+			<tx:method name="*" />
+		</tx:attributes>
+	</tx:advice>
+
+	<aop:config>
+		<aop:pointcut id="userServicePointCut"
+			expression="execution(* com.biavan.brend.service.*Service.*(..))" />
+		<aop:advisor advice-ref="txAdvice" pointcut-ref="userServicePointCut" />
+	</aop:config>
+
+</beans>

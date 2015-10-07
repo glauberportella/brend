@@ -1,0 +1,167 @@
+hr.linha {
+	border-width: 3px !important;
+}
+
+// OS Finalizada
+.btn-finalizada { 
+  color: #FFFFFF; 
+  background-color: #46BFBD; 
+  border-color: #46BFBD; 
+} 
+ 
+.btn-finalizada:hover, 
+.btn-finalizada:focus, 
+.btn-finalizada:active, 
+.btn-finalizada.active, 
+.open > .dropdown-toggle.btn-finalizada { 
+  color: #FFFFFF; 
+  background-color: #3dafad; 
+  border-color: #46BFBD; 
+} 
+ 
+.btn-finalizada:active, 
+.btn-finalizada.active, 
+.open > .dropdown-toggle.btn-finalizada { 
+  background-image: none; 
+} 
+ 
+.btn-finalizada.disabled, 
+.btn-finalizada[disabled], 
+fieldset[disabled] .btn-finalizada, 
+.btn-finalizada.disabled:hover, 
+.btn-finalizada[disabled]:hover, 
+fieldset[disabled] .btn-finalizada:hover, 
+.btn-finalizada.disabled:focus, 
+.btn-finalizada[disabled]:focus, 
+fieldset[disabled] .btn-finalizada:focus, 
+.btn-finalizada.disabled:active, 
+.btn-finalizada[disabled]:active, 
+fieldset[disabled] .btn-finalizada:active, 
+.btn-finalizada.disabled.active, 
+.btn-finalizada[disabled].active, 
+fieldset[disabled] .btn-finalizada.active { 
+  background-color: #46BFBD; 
+  border-color: #46BFBD; 
+} 
+ 
+.btn-finalizada .badge { 
+  color: #46BFBD; 
+  background-color: #FFFFFF; 
+}
+
+
+// OS Cancelada
+.btn-cancelada { 
+  color: #FFFFFF; 
+  background-color: #949FB1; 
+  border-color: #949FB1; 
+} 
+ 
+.btn-cancelada:hover, 
+.btn-cancelada:focus, 
+.btn-cancelada:active, 
+.btn-cancelada.active, 
+.open > .dropdown-toggle.btn-cancelada { 
+  color: #FFFFFF; 
+  background-color: #8592a6; 
+  border-color: #949FB1; 
+} 
+ 
+.btn-cancelada:active, 
+.btn-cancelada.active, 
+.open > .dropdown-toggle.btn-cancelada { 
+  background-image: none; 
+} 
+ 
+.btn-cancelada.disabled, 
+.btn-cancelada[disabled], 
+fieldset[disabled] .btn-cancelada, 
+.btn-cancelada.disabled:hover, 
+.btn-cancelada[disabled]:hover, 
+fieldset[disabled] .btn-cancelada:hover, 
+.btn-cancelada.disabled:focus, 
+.btn-cancelada[disabled]:focus, 
+fieldset[disabled] .btn-cancelada:focus, 
+.btn-cancelada.disabled:active, 
+.btn-cancelada[disabled]:active, 
+fieldset[disabled] .btn-cancelada:active, 
+.btn-cancelada.disabled.active, 
+.btn-cancelada[disabled].active, 
+fieldset[disabled] .btn-cancelada.active { 
+  background-color: #949FB1; 
+  border-color: #949FB1; 
+} 
+ 
+.btn-cancelada .badge { 
+  color: #949FB1; 
+  background-color: #FFFFFF; 
+}
+
+
+// OS Reaberta
+.btn-reaberta { 
+  color: #FFFFFF; 
+  background-color: #6A5ACD; 
+  border-color: #6A5ACD; 
+} 
+ 
+.btn-reaberta:hover, 
+.btn-reaberta:focus, 
+.btn-reaberta:active, 
+.btn-reaberta.active, 
+.open > .dropdown-toggle.btn-reaberta { 
+  color: #FFFFFF; 
+  background-color: #5846c7; 
+  border-color: #6A5ACD; 
+} 
+ 
+.btn-reaberta:active, 
+.btn-reaberta.active, 
+.open > .dropdown-toggle.btn-reaberta { 
+  background-image: none; 
+} 
+ 
+.btn-reaberta.disabled, 
+.btn-reaberta[disabled], 
+fieldset[disabled] .btn-reaberta, 
+.btn-reaberta.disabled:hover, 
+.btn-reaberta[disabled]:hover, 
+fieldset[disabled] .btn-reaberta:hover, 
+.btn-reaberta.disabled:focus, 
+.btn-reaberta[disabled]:focus, 
+fieldset[disabled] .btn-reaberta:focus, 
+.btn-reaberta.disabled:active, 
+.btn-reaberta[disabled]:active, 
+fieldset[disabled] .btn-reaberta:active, 
+.btn-reaberta.disabled.active, 
+.btn-reaberta[disabled].active, 
+fieldset[disabled] .btn-reaberta.active { 
+  background-color: #6A5ACD; 
+  border-color: #6A5ACD; 
+} 
+ 
+.btn-reaberta .badge { 
+  color: #6A5ACD; 
+  background-color: #FFFFFF; 
+}
+
+
+// Themes
+.btn-reaberta,
+.btn-cancelada,
+.btn-finalizada {
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, .2);
+  -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, .15), 0 1px 1px rgba(0, 0, 0, .075);
+          box-shadow: inset 0 1px 0 rgba(255, 255, 255, .15), 0 1px 1px rgba(0, 0, 0, .075);
+}
+.btn-reaberta.active,
+.btn-cancelada.active,
+.btn-finalizada:active, {
+  -webkit-box-shadow: inset 0 3px 5px rgba(0, 0, 0, .125);
+          box-shadow: inset 0 3px 5px rgba(0, 0, 0, .125);
+}
+.btn-reaberta .badge,
+.btn-cancelada .badge,
+.btn-finalizada .badge {
+  text-shadow: none;
+}

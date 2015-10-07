@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+
+	<!-- Configuração usada somente para gerar o banco de dados -->
+
+	<session-factory>
+	
+		<!-- dados de Conexão com o Banco com MS SQL Server -->
+		<!-- <property name="hibernate.dialect">org.hibernate.dialect.SQLServerDialect</property>
+		<property name="hibernate.connection.driver_class">com.microsoft.sqlserver.jdbc.SQLServerDriver</property>
+		<property name="hibernate.connection.url">jdbc:sqlserver://localhost:1433;databaseName=gestor</property>
+		<property name="hibernate.connection.username">brend</property>
+		<property name="hibernate.connection.password">0ms3rv1c0s</property> -->
+	
+		<!-- dados de Conexão com o Banco MySQL-->
+		<property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+		<property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+		<property name="hibernate.connection.url">jdbc:mysql://localhost:3306/brend</property>
+		<property name="hibernate.connection.username">brend</property>
+		<property name="hibernate.connection.password">br3nd#p4ss</property>
+
+		<!-- Quando Banco de dados será utilizado (PostgreSQL, MySQL, SQLServer, Oracle) -->
+		<property name="hibernate.show_sql">true</property>
+		<property name="hibernate.format_sql">true</property>
+		<property name="hibernate.jdbc.batch_size">20</property>
+
+		<property name="hibernate.hbm2ddl.auto">update</property>
+		<!-- Ações que podem ser executadas: 
+			validate: Apenas valida se as tabelas estão conforme o modelo de entidades 
+			update: Atualiza as tabelas conforme estão as entidades 
+			create: Cria as tabelas que não existem 
+			create-drop: Apaga todas as tabelas e recria -->
+
+		<!-- Lista das entidades que serão persistidas no Banco de Dados -->
+		<mapping class="com.biavan.brend.model.Funcionario" />
+		<mapping class="com.biavan.brend.model.TipoFuncionario" />
+		<mapping class="com.biavan.brend.model.Peca" />
+		<mapping class="com.biavan.brend.model.ConfigEmpresa" />
+		<mapping class="com.biavan.brend.model.TarifarioPeca" />
+		<mapping class="com.biavan.brend.model.TarifarioServico" />
+		<mapping class="com.biavan.brend.model.Marca" />
+		<mapping class="com.biavan.brend.model.TipoServico" />
+		<mapping class="com.biavan.brend.model.Servico" />
+		<mapping class="com.biavan.brend.model.Fornecedor" />
+		<mapping class="com.biavan.brend.model.TipoMotor" />
+		<mapping class="com.biavan.brend.model.TipoDocumento" />
+		<mapping class="com.biavan.brend.model.Veiculo" />
+		<mapping class="com.biavan.brend.model.Cliente" />
+		<mapping class="com.biavan.brend.model.Orcamento" />
+		<mapping class="com.biavan.brend.model.Pedido" />
+		<mapping class="com.biavan.brend.model.PecaPedido" />
+		<mapping class="com.biavan.brend.model.OrdemServico" />
+		<mapping class="com.biavan.brend.model.Usuario" />
+		<mapping class="com.biavan.brend.model.PecaOrcamento" />
+		<mapping class="com.biavan.brend.model.ServicoOrcamento" />
+		<mapping class="com.biavan.brend.model.SolicitacaoRetirada" />
+		<mapping class="com.biavan.brend.model.PecaOrdemServico" />
+		<mapping class="com.biavan.brend.model.ServicoOrdemServico" />
+		<mapping class="com.biavan.brend.model.RegistroContato" />
+		<mapping class="com.biavan.brend.model.StatusOrdemServico" />
+		<mapping class="com.biavan.brend.model.Perfil" />
+		<mapping class="com.biavan.brend.model.Recurso" />
+	</session-factory>
+</hibernate-configuration>

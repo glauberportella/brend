@@ -1,0 +1,273 @@
+<beans:beans xmlns="http://www.springframework.org/schema/security"
+	xmlns:beans="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+	http://www.springframework.org/schema/security
+	http://www.springframework.org/schema/security/spring-security-3.2.xsd">
+	
+	<http pattern="/*/listarjson" security="none"/>
+	<http pattern="/*/listarjson/*" security="none"/>
+	<http pattern="/*/*/listarjson/*" security="none"/>
+	<http pattern="/*/enviarEmail" security="none"/>
+	
+	<!-- enable use-expressions -->
+	<http auto-config="true" use-expressions="true">
+	
+		<intercept-url pattern="/home" access="
+			hasRole('ROLE_TEC') or hasRole('ROLE_ADM') or 
+			hasRole('ROLE_ALM') or hasRole('ROLE_MEC') or 
+			hasRole('ROLE_ATE') or hasRole('ROLE_GER')" />
+			
+		<intercept-url pattern="/about" access="
+			hasRole('ROLE_TEC') or hasRole('ROLE_ADM') or 
+			hasRole('ROLE_ALM') or hasRole('ROLE_MEC') or 
+			hasRole('ROLE_ATE') or hasRole('ROLE_GER')" />
+			
+		<intercept-url pattern="/busca/***" access="
+			hasRole('ROLE_TEC') or hasRole('ROLE_ADM') or 
+			hasRole('ROLE_ALM') or hasRole('ROLE_MEC') or 
+			hasRole('ROLE_ATE') or hasRole('ROLE_GER')" />
+			
+		<intercept-url pattern="/empresa/**" access="
+			hasRole('ROLE_TEC') or hasRole('ROLE_ADM')" />
+			
+		<intercept-url pattern="/fornecedor/**" access="
+			hasRole('ROLE_TEC') or 
+			hasRole('ROLE_ADM') or 
+			hasRole('ROLE_GER')" />
+			
+		<intercept-url pattern="/tipoMotor/**" access="
+			hasRole('ROLE_TEC') or 
+			hasRole('ROLE_ADM') or
+			hasRole('ROLE_GER')" />
+			
+		<intercept-url pattern="/tipoServico/**" access="
+			hasRole('ROLE_TEC') or 
+			hasRole('ROLE_ADM') or
+			hasRole('ROLE_GER')" />
+			
+		<intercept-url pattern="/veiculo/**" access="
+			hasRole('ROLE_TEC') or 
+			hasRole('ROLE_ADM') or
+			hasRole('ROLE_GER')" />
+			
+		<intercept-url pattern="/marca/**" access="
+			hasRole('ROLE_TEC') or 
+			hasRole('ROLE_ADM') or
+			hasRole('ROLE_GER')" />
+						
+		<intercept-url pattern="/tipoFuncionario/**" access="
+			hasRole('ROLE_TEC') or 
+			hasRole('ROLE_ADM') or
+			hasRole('ROLE_GER')" />
+			
+		<intercept-url pattern="/tipoDocumento/**" access="
+			hasRole('ROLE_TEC') or 
+			hasRole('ROLE_ADM') or
+			hasRole('ROLE_GER')" />
+			
+		<intercept-url pattern="/peca/**" access="
+			hasRole('ROLE_TEC') or 
+			hasRole('ROLE_ADM') or
+			hasRole('ROLE_GER')" />
+			
+		<intercept-url pattern="/servico/**" access="
+			hasRole('ROLE_TEC') or 
+			hasRole('ROLE_ADM') or
+			hasRole('ROLE_GER')" />
+			
+		<intercept-url pattern="/funcionario/listar" access="
+			hasRole('ROLE_TEC') or 
+			hasRole('ROLE_ADM') or
+			hasRole('ROLE_GER')" />
+
+		<intercept-url pattern="/funcionario/remover/*" access="
+			hasRole('ROLE_TEC') or 
+			hasRole('ROLE_ADM') or
+			hasRole('ROLE_GER')" />
+
+		<intercept-url pattern="/funcionario/telaAtualizar/*" access="
+			hasRole('ROLE_TEC') or 
+			hasRole('ROLE_ADM') or
+			hasRole('ROLE_GER')" />
+
+		<intercept-url pattern="/funcionario/telaInserir" access="
+			hasRole('ROLE_TEC') or 
+			hasRole('ROLE_ADM') or
+			hasRole('ROLE_GER')" />
+			
+		<intercept-url pattern="/funcionario/perfil/*" access="
+			hasRole('ROLE_TEC') or hasRole('ROLE_ADM') or 
+			hasRole('ROLE_ALM') or hasRole('ROLE_MEC') or 
+			hasRole('ROLE_ATE') or hasRole('ROLE_GER')" />			
+
+		<intercept-url pattern="/funcionario/inserir" access="
+			hasRole('ROLE_TEC') or hasRole('ROLE_ADM') or 
+			hasRole('ROLE_ALM') or hasRole('ROLE_MEC') or 
+			hasRole('ROLE_ATE') or hasRole('ROLE_GER')" />			
+
+			
+		<intercept-url pattern="/tarifaPeca/**" access="
+			hasRole('ROLE_TEC') or 
+			hasRole('ROLE_ADM') or
+			hasRole('ROLE_GER')" />
+			
+		<intercept-url pattern="/tarifaServico/**" access="
+			hasRole('ROLE_TEC') or 
+			hasRole('ROLE_ADM') or
+			hasRole('ROLE_GER')" />
+			
+		<intercept-url pattern="/cliente/**" access="
+			hasRole('ROLE_TEC') or 
+			hasRole('ROLE_ADM') or
+			hasRole('ROLE_GER')" />
+			
+		<intercept-url pattern="/orcamento/**" access="
+			hasRole('ROLE_TEC') or hasRole('ROLE_ADM') or 
+			hasRole('ROLE_ATE') or hasRole('ROLE_GER')" />
+			
+		<intercept-url pattern="/ordemServico/listar**" access="
+			hasRole('ROLE_TEC') or hasRole('ROLE_ADM') or 
+			hasRole('ROLE_ATE') or hasRole('ROLE_GER') or
+			hasRole('ROLE_MEC')" />
+
+		<intercept-url pattern="/ordemServico/atualizar**" access="
+			hasRole('ROLE_TEC') or hasRole('ROLE_ADM') or 
+			hasRole('ROLE_ATE') or hasRole('ROLE_GER')" />
+		
+		<intercept-url pattern="/ordemServico/inserirOSAdicional**" access="
+			hasRole('ROLE_TEC') or hasRole('ROLE_ADM') or 
+			hasRole('ROLE_ATE') or hasRole('ROLE_GER')"/>
+			
+		<intercept-url pattern="/ordemServico/inserirNovaOS**" access="
+			hasRole('ROLE_TEC') or hasRole('ROLE_ADM') or 
+			hasRole('ROLE_ATE') or hasRole('ROLE_GER')"/>
+			
+		<intercept-url pattern="/ordemServico/remover**" access="
+			hasRole('ROLE_TEC') or hasRole('ROLE_ADM') or 
+			hasRole('ROLE_ATE') or hasRole('ROLE_GER')"/>
+			
+		<intercept-url pattern="/ordemServico/telaAtualizar**" access="
+			hasRole('ROLE_TEC') or hasRole('ROLE_ADM') or 
+			hasRole('ROLE_ATE') or hasRole('ROLE_GER') or
+			hasRole('ROLE_MEC')"/>
+			
+		<intercept-url pattern="/ordemServico/telaNovaOS**" access="
+			hasRole('ROLE_TEC') or hasRole('ROLE_ADM') or 
+			hasRole('ROLE_ATE') or hasRole('ROLE_GER')"/>
+			
+		<intercept-url pattern="/ordemServico/telaOSAdicional**" access="
+			hasRole('ROLE_TEC') or hasRole('ROLE_ADM') or 
+			hasRole('ROLE_ATE') or hasRole('ROLE_GER') or
+			hasRole('ROLE_MEC')"/>
+			
+		<intercept-url pattern="/ordemServico/imprimir**" access="
+			hasRole('ROLE_TEC') or hasRole('ROLE_ADM') or 
+			hasRole('ROLE_ATE') or hasRole('ROLE_GER') or
+			hasRole('ROLE_MEC')"/>
+
+		<intercept-url pattern="/ordemServico/listar/mecanico/*" access="
+			hasRole('ROLE_TEC') or 
+			hasRole('ROLE_MEC')"/>
+			
+		<intercept-url pattern="/pedido/**" access="
+			hasRole('ROLE_TEC') or hasRole('ROLE_ADM') or 
+			hasRole('ROLE_ALM') or hasRole('ROLE_GER')" />	
+			
+		<intercept-url pattern="/solicitacao/telaAprovar/*" access="
+			hasRole('ROLE_TEC') or 
+			hasRole('ROLE_ADM') or
+			hasRole('ROLE_ALM') or 
+			hasRole('ROLE_GER')"/>
+
+		<intercept-url pattern="/solicitacao/inserirAprovacao" access="
+			hasRole('ROLE_TEC') or 
+			hasRole('ROLE_ADM') or 
+			hasRole('ROLE_ALM') or 
+			hasRole('ROLE_GER')"/>	
+
+		<intercept-url pattern="/solicitacao/listarPendentes" access="
+			hasRole('ROLE_TEC') or 
+			hasRole('ROLE_ADM') or 
+			hasRole('ROLE_ALM') or 
+			hasRole('ROLE_GER')"/>	
+
+		<intercept-url pattern="/solicitacao/telaSolicitar" access="
+			hasRole('ROLE_TEC') or 
+			hasRole('ROLE_ADM') or
+			hasRole('ROLE_MEC') or 
+			hasRole('ROLE_GER')"/>
+
+			
+		<intercept-url pattern="/solicitacao/telaVisualizar/*" access="
+			hasRole('ROLE_TEC') or 
+			hasRole('ROLE_ADM') or 
+			hasRole('ROLE_ALM') or 
+			hasRole('ROLE_MEC') or 
+			hasRole('ROLE_GER')"/>
+		
+		<intercept-url pattern="/solicitacao/inserirSolicitacao" access="
+			hasRole('ROLE_TEC') or 
+			hasRole('ROLE_ADM') or 
+			hasRole('ROLE_MEC') or 
+			hasRole('ROLE_GER')"/>	
+
+
+		<intercept-url pattern="/solicitacao/remover/*" access="
+			hasRole('ROLE_TEC') or 
+			hasRole('ROLE_ADM') or  
+			hasRole('ROLE_GER')"/>
+
+
+		<intercept-url pattern="/relatorio/**" access="
+			hasRole('ROLE_TEC') or hasRole('ROLE_ADM') or 
+			hasRole('ROLE_ALM') or hasRole('ROLE_MEC') or 
+			hasRole('ROLE_ATE') or hasRole('ROLE_GER')" />	
+
+		<intercept-url pattern="/registroContato/inserir**" access="
+			hasRole('ROLE_TEC') or hasRole('ROLE_ADM') or 
+			hasRole('ROLE_ATE') or hasRole('ROLE_GER') or
+			hasRole('ROLE_MEC')" />	
+			
+		<intercept-url pattern="/registroContato/telaFinalizar/*" access="
+			hasRole('ROLE_TEC') or 
+			hasRole('ROLE_ADM') or 
+			hasRole('ROLE_GER') or
+			hasRole('ROLE_MEC')"/>
+
+		<intercept-url pattern="/registroContato/telaCancelar/*" access="
+			hasRole('ROLE_TEC') or 
+			hasRole('ROLE_ADM') or 
+			hasRole('ROLE_GER')"/>
+
+		<intercept-url pattern="/registroContato/telaReabrir/*" access="
+			hasRole('ROLE_TEC') or 
+			hasRole('ROLE_ADM') or 
+			hasRole('ROLE_GER')"/>
+
+		<intercept-url pattern="/registroContato/alterarStatus/*" access="
+			hasRole('ROLE_TEC') or hasRole('ROLE_ADM') or 
+			hasRole('ROLE_ATE') or hasRole('ROLE_GER') or
+			hasRole('ROLE_MEC')"/>
+
+		<!-- access denied page -->
+		<access-denied-handler error-page="/403" />
+		<form-login 
+		    login-page="/login" 
+		    default-target-url="/home"
+			authentication-failure-url="/login?error" 
+			username-parameter="login"
+			password-parameter="senha" />
+		<logout/>
+		<logout logout-success-url="/login?logout" />
+		<!-- enable csrf protection -->
+		<csrf />
+	</http>
+
+	<authentication-manager>
+		<authentication-provider user-service-ref="usuarioService" >
+			<password-encoder hash="bcrypt" />
+		</authentication-provider>
+	</authentication-manager>
+
+</beans:beans>
